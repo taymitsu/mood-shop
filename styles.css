@@ -24,3 +24,10 @@ body{
     padding: 0.5em;
     text-decoration: none;
 }
+.page-header nav{
+    background-color: #FFC4DF;
+    font-family: 'Arial Narrow';
+    color: navy;
+    font-size:  15px;
+
+}
