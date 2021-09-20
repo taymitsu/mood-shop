@@ -40,7 +40,7 @@
                 cart.push(item)
             }
 
-            //Show Items
+            //SHOW ITEMS
             function showItems() {
                 const qty = getQty()
                 console.log(`You have ${qty} items in your cart`)
@@ -53,7 +53,7 @@
                 // include () to invoke function call 
             }
 
-            //quantity
+            //QUANTITY
             function getQty() {
                 let qty = 0 
                 for (let i = 0; i < cart.length; i += 1) {
@@ -61,22 +61,40 @@
                 }
                 return qty
             }
-            //total
+            //TOTAL
             function getTotal() {
                 let total = 0 
                 for (let i = 0; i < cart.length; i += 1) {
                     total += cart[i].price * cart[i].qty
                 }
                 return total.toFixed(2)
+                // toFixed(rounds to the decimal places listed here)
             }
 
-            addItem('happy', 5.99)
-            addItem('sad', 5.99)
-            addItem('angry', 5.99)
-            addItem('happy', 5.99)
-            addItem('angry', 5.99)
+            //REMOVE
+            function removeItem(name, qty = 0) {
+                for (let i = 0; i < cart.length; i += 1) {
+                    if (cart[i].name === name) {
+                        if (qty > 0) {
+                            cart[i].qty -= qty
+                        }
+                        if (cart[i].qty < 1 || qty === 0) {
+                            cart.splice(i, 1) 
+                        }
+                        return
+                    }
+                }
+            }
 
-            showItems()
+            /// addItem('scared', 5.99)
+            //addItem('shy', 5.99)
+            //addItem('scared', 5.99)
+            //addItem('surprised', 5.99)
+            //addItem('scared', 5.99)
+            //addItem('scared', 5.99)
+            //removeItem('scared', 1)
+
+            //showItems()
         
         </script>
     </body>
