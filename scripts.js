@@ -15,6 +15,7 @@ for (let i = 0; i < data.length; i += 1){
    // desc.className = 'desc'
     desc.innerText = data[i].desc
     newDiv.appendChild(desc)
+    
     const price = document.createElement('P')
     //price.className = 'price'
     price.innerText = data[i].price
