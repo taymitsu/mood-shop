@@ -1,4 +1,7 @@
 import data from './data.js'
+const itemList = document.getElementById('item-list')
+itemList.innerHTML = '<li>Hello world</li>'
+
 const itemsContainer = document.querySelector('#items')
 
 for (let i = 0; i < data.length; i += 1){

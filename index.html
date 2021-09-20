@@ -22,9 +22,22 @@
             <div class='items' id='items'></div>
         </main>
         <footer>
-
+            <div id='cart-qty'>
+                <!-- cart qty here -->
+              </div>
+              <ul id='item-list'>
+                <!-- cart items -->
+              </ul>
+              <div id='cart-total'>
+                <!-- cart total -->
+              </div>
+            </ul>
         </footer>
-        <script>
+        <script src='scripts.js' type="module">
+            const itemList = document.getElementById('item-list')
+            const cartQty = document.getElementById('cart-qty')
+            const cartTotal = document.getElementById('cart-total')
+
             const cart = [ ]
             
             // ADD ITEMS 
@@ -43,13 +56,24 @@
             //SHOW ITEMS
             function showItems() {
                 const qty = getQty()
-                console.log(`You have ${qty} items in your cart`)
+                //console.log(`You have ${qty} items in your cart`)
+                cartQty.innerHTML = `You have ${qty} items in your cart`
 
+                let itemStr = ''
                 for (let i = 0; i < cart.length; i +=1) {
-                    console.log(`- ${cart[i].name} $${cart[i].price} x ${cart[i].qty}`)
-                }
+                    //console.log(`- ${cart[i].name} $${cart[i].price} x ${cart[i].qty}`)
+                    const {name, price, qty} = cart[i]
 
-                console.log(`Total in cart $${getTotal()}`)
+                    itemStr += `<li>
+                        ${name}
+                        $${price} x ${qty} =
+                        ${qty * price} 
+                        </li>`
+                }
+                itemList.innerHTML =itemStr 
+
+                //console.log(`Total in cart $${getTotal()}`)
+                cartTotal.innerHTML = `Total in cart $${getTotal()}`
                 // include () to invoke function call 
             }
 
@@ -86,17 +110,17 @@
                 }
             }
 
-            /// addItem('scared', 5.99)
-            //addItem('shy', 5.99)
+            addItem('scared', 5.99)
+            addItem('shy', 5.99)
             //addItem('scared', 5.99)
             //addItem('surprised', 5.99)
+            addItem('scared', 5.99)
             //addItem('scared', 5.99)
-            //addItem('scared', 5.99)
-            //removeItem('scared', 1)
+            removeItem('scared', 1)
 
-            //showItems()
+
+            showItems()
         
         </script>
     </body>
 </html>
-
