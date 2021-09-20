@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html>
     <head>
+        <meta charset="UTF-8">
+
         <title>Mood Shop</title>
         <link rel='stylesheet' href='styles.css'>
     </head>
@@ -8,18 +10,35 @@
     <body>
         <header class='page-header'>
             <h4>The Mood Shop</h4>
-                <nav>
-                    <ul>
-                        <li><a href="#">Home</a></li>
-                        <li><a href="#">About</a></li>
-                        <li><a href="#">Cart</a></li>
-                    </ul>
-                </nav>
+            <nav>
+                <ul>
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#">About</a></li>
+                    <li><a href="#">Cart</a></li>
+                </ul>
+            </nav>
         </header>
-            <main>
-                <div class='items' id='items'></div>
-            </main>
-        <script src='scripts.js' type="module"></script>
+        <main>
+            <div class='items' id='items'></div>
+        </main>
+        <footer>
+
+        </footer>
+        <script src='scripts.js' type="module">
+            const cart = [ ]
+
+            function addItem(name, price) {
+                const item = {name: name, price: price, qty: 1 }
+                cart.push(item)
+            }
+
+            function showItems() {
+                console.log(`You have ${cart.length} items in your cart`)
+            }
+
+            showItems()
+        
+        </script>
     </body>
 </html>
 
