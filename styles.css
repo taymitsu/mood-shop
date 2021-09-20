@@ -15,19 +15,44 @@ body{
 .page-header ul{
     display: flex;
     flex-direction: row;
-    list-style: none; 
     justify-content: space-between;
+    list-style: none;
 }
+
 
 .page-header a{
     display: block;
     padding: 0.5em;
     text-decoration: none;
 }
-.page-header nav{
-    background-color: #FFC4DF;
-    font-family: 'Arial Narrow';
-    color: navy;
-    font-size:  15px;
 
+.page-header nav{
+    font-family: 'Arial Narrow';
+    font-size:  15px;
+    background-color: #C4FFC7;
+}
+
+.items{
+    width: 80%;
+    margin: auto;
+
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-gap: 1em;
+}
+
+.items img{
+    width: 100%;
+    height: auto;
+}
+
+.item button{
+    border-radius: 4px;
+    background-color: white;
+    border-width: thin;
+    font-size: 8px;
+    
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
