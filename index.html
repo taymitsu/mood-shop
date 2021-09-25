@@ -1,15 +1,15 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
     <head>
         <meta charset="UTF-8">
-
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Mood Shop</title>
         <link rel='stylesheet' href='styles.css'>
     </head>
 
     <body>
         <header class='page-header'>
-            <h4>The Mood Shop</h4>
+            <h1>The Mood Shop</h1>
             <nav>
                 <ul>
                     <li><a href="#">Home</a></li>
@@ -34,93 +34,6 @@
             </ul>
         </footer>
         <script src='scripts.js' type="module">
-            const itemList = document.getElementById('item-list')
-            const cartQty = document.getElementById('cart-qty')
-            const cartTotal = document.getElementById('cart-total')
-
-            const cart = [ ]
-            
-            // ADD ITEMS 
-            function addItem(name, price) {
-                for (let i = 0; i < cart.length; i += 1) {
-                    if (cart[i].name === name) {
-                        cart[i].qty += 1
-                        return 
-                    }
-                }
-
-                const item = {name, price, qty: 1} //qty has to remain 1, because it doesn;t have a value 
-                cart.push(item)
-            }
-
-            //SHOW ITEMS
-            function showItems() {
-                const qty = getQty()
-                //console.log(`You have ${qty} items in your cart`)
-                cartQty.innerHTML = `You have ${qty} items in your cart`
-
-                let itemStr = ''
-                for (let i = 0; i < cart.length; i +=1) {
-                    //console.log(`- ${cart[i].name} $${cart[i].price} x ${cart[i].qty}`)
-                    const {name, price, qty} = cart[i]
-
-                    itemStr += `<li>
-                        ${name}
-                        $${price} x ${qty} =
-                        ${qty * price} 
-                        </li>`
-                }
-                itemList.innerHTML =itemStr 
-
-                //console.log(`Total in cart $${getTotal()}`)
-                cartTotal.innerHTML = `Total in cart $${getTotal()}`
-                // include () to invoke function call 
-            }
-
-            //QUANTITY
-            function getQty() {
-                let qty = 0 
-                for (let i = 0; i < cart.length; i += 1) {
-                    qty += cart[i].qty
-                }
-                return qty
-            }
-            //TOTAL
-            function getTotal() {
-                let total = 0 
-                for (let i = 0; i < cart.length; i += 1) {
-                    total += cart[i].price * cart[i].qty
-                }
-                return total.toFixed(2)
-                // toFixed(rounds to the decimal places listed here)
-            }
-
-            //REMOVE
-            function removeItem(name, qty = 0) {
-                for (let i = 0; i < cart.length; i += 1) {
-                    if (cart[i].name === name) {
-                        if (qty > 0) {
-                            cart[i].qty -= qty
-                        }
-                        if (cart[i].qty < 1 || qty === 0) {
-                            cart.splice(i, 1) 
-                        }
-                        return
-                    }
-                }
-            }
-
-            addItem('scared', 5.99)
-            addItem('shy', 5.99)
-            //addItem('scared', 5.99)
-            //addItem('surprised', 5.99)
-            addItem('scared', 5.99)
-            //addItem('scared', 5.99)
-            removeItem('scared', 1)
-
-
-            showItems()
-        
         </script>
     </body>
 </html>
