@@ -1,10 +1,9 @@
 import data from './data.js'
 
+const itemsContainer = document.querySelector('#items')
 const itemList = document.getElementById('item-list')
 const cartQty = document.getElementById('cart-qty')
 const cartTotal = document.getElementById('cart-total')
-
-const itemsContainer = document.querySelector('#items');
 
 const cart = [];
 
@@ -16,7 +15,7 @@ for (let i = 0; i < data.length; i += 1){
     img.width = 300;
     img.height = 300;
     newDiv.appendChild(img);
-    console.log(img)
+    //console.log(img)
     itemsContainer.appendChild(newDiv);
 
 ////////////////DESCRIPTION

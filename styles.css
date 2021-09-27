@@ -47,17 +47,23 @@ body{
 
 .item button{
     border-radius: 4px;
-    background-color: white;
+    background-color:whitesmoke;
     border-width: thin;
     font-size: 8px;
-
+    padding: 1.5px;
+    /* stretch, center add to cart button*/
     display: flex;
-    align-items: center;
-    justify-content: center;
+    text-align: center;
+    margin: auto;
+
 }
 
 .item{
     border: solid .3em;
     border-color: black;
     border-width: 1.5px;
+}
+
+.item p{
+    font-size: 12px;
 }
