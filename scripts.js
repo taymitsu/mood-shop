@@ -50,20 +50,26 @@ function addItem(name, price) {
 //--------------------------------------------------------------------------------------
 ////////////////SHOW ITEMS
 function showItems() {
+    const all_items_button = Array.from(document.querySelectorAll("button"));
+    all_items_button.forEach(elt => elt.addEventListener('click', () => {
+        addItem(elt.getAttribute('id'), elt.getAttribute('data-price'))
+        showItems()
+      }))
+      function showItems() {}
+      showCart();
+    }
+
     const qty = getQty()
-    //console.log(`You currently have ${qty} items in your cart`)
     cartQty.innerHTML = `You currently have ${qty} items in your cart`
 
-    let itemStr = ''    
+    let itemStr = '';   
     for (let i = 0; i < cart.length; i +=1) {
-        //console.log(`${cart[i].name} $${cart[i].price} x ${cart[i].qty}`)
-        const {name, price, qty} = cart[i]
+        const {name, price, qty} = cart[i];
 
         itemStr += `<li>${name} $${price} x ${qty} =${qty * price}</li>`
     }
     itemList.innerHTML = itemStr
     cartTotal.innerHTML = `Total in cart: $${getTotal()}`
-}
 //--------------------------------------------------------------------------------------
 ////////////////GET QUANTITY 
 function getQty() {
