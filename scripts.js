@@ -2,6 +2,7 @@ import data from './data.js'
 
 const itemsContainer = document.querySelector('#items')
 const itemList = document.getElementById('item-list')
+itemList.innerHTML = '<li>Hello World</li>'
 const cartQty = document.getElementById('cart-qty')
 const cartTotal = document.getElementById('cart-total')
 
@@ -49,26 +50,17 @@ function addItem(name, price) {
 //--------------------------------------------------------------------------------------
 ////////////////SHOW ITEMS
 function showItems() {
-    const all_items_button = Array.from(document.querySelectorAll("button"));
-    all_items_button.forEach(elt => elt.addEventListener('click', () => {
-        addItem(elt.getAttribute('id'), elt.getAttribute('data-price'))
-        showItems()
-      }))
-      function showItems() {}
-      showCart();
-    }
-
     const qty = getQty()
-    cartQty.innerHTML = `You currently have ${qty} items in your cart`
+    console.log(`You have ${qty} items in your cart`)
 
-    let itemStr = '';   
+    let itemStr = ''
     for (let i = 0; i < cart.length; i +=1) {
-        const {name, price, qty} = cart[i];
-
-        itemStr += `<li>${name} $${price} x ${qty} =${qty * price}</li>`
+        itemStr += `<li>${cart[i].name} $${cart[i].price} x ${cart[i].qty}</li>`
     }
     itemList.innerHTML = itemStr
-    cartTotal.innerHTML = `Total in cart: $${getTotal()}`
+
+    console.log(`Total in cart: $${getTotal()}`)
+}
 //--------------------------------------------------------------------------------------
 ////////////////GET QUANTITY 
 function getQty() {
@@ -82,16 +74,16 @@ function getQty() {
 ////////////////GET TOTAL
 function getTotal() {
     let total = 0
-    for(let i = 0; i < cart.length; i += 1) {
+    for (let i = 0; i < cart.length; i += 1) {
         total += cart[i].price * cart[i].qty
     }
     return total.toFixed(2) //toFixed(desired amount of decimal places) LAST BEFORE DISPLAYING 
 }
 //--------------------------------------------------------------------------------------
 ////////////////REMOVE ITEM 
-function removeItem(name, qty = 0) { 
+function removeItem(name, qty = 0) { //zero is default value
     for (let i = 0; i < cart.length; i += 1) {
-        if (cart[i].name === name) {
+        if (cart[i].name === name) { //comparing NAMES
             if (qty > 0) {
                 cart[i].qty -= qty
             }
@@ -102,7 +94,7 @@ function removeItem(name, qty = 0) {
         }
     }
 }
-//--------------------------------------------------------------------------------------
+//----------------------------------------------------------------------------------------
     addItem('energetic', 5.99)
     addItem('scared', 5.99)
     addItem('gloomy', 5.99)
@@ -116,3 +108,4 @@ function removeItem(name, qty = 0) {
     removeItem('gloomy')
 
     showItems()
+
